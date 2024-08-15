@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Virtual</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            background-image: url('https://www.transparenttextures.com/patterns/french-stucco.png');
+            color: #3e3e3e;
+            margin: 0;
+            padding: 0;
+            background-color: #faf9f6;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background-color: #4e2a84;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 1.2em;
+            font-style: italic;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .book {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .book img {
+            margin-right: 20px;
+            width: 100px;
+            height: 150px;
+            border-radius: 8px;
+            border: 2px solid #4e2a84;
+        }
+
+        .book h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: #4e2a84;
+        }
+
+        .book p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #4e2a84;
+            color: white;
+            position: relative;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4e2a84;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #371b62;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover, .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Alto contraste */
+        .high-contrast {
+            background-color: black;
+            color: yellow;
+        }
+
+        /* Zoom */
+        .zoom-in {
+            transform: scale(1.2);
+        }
+
+        /* Tamanho da Fonte */
+        .large-text {
+            font-size: 20px;
+        }
+
+        /* Filtros de Daltonismo */
+        .protanopia {
+            background-color: #d1a3a1; /* Alterar conforme necessário */
+            filter: contrast(1.2) brightness(0.8);
+        }
+
+        .deuteranopia {
+            background-color: #c1d0a4; /* Alterar conforme necessário */
+            filter: contrast(1.2) brightness(0.8);
+        }
+
+        .tritanopia {
+            background-color: #a3c2d1; /* Alterar conforme necessário */
+            filter: contrast(1.2) brightness(0.8);
+        }
+
+        .achromatopsia {
+            background-color: #e1e1e1; /* Alterar conforme necessário */
+            filter: grayscale(1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="siteTitle">Bem-vindo à Biblioteca Virtual</h1>
+        <p id="siteSlogan">"Lendo para além da imaginação"</p>
+        <button id="settingsButton">Configurações de Acessibilidade</button>
+    </header>
+
+    <main>
+        <section class="book">
+            <img src="https://harpercollins.com.br/cdn/shop/products/9786555114249.jpg?v=1691738136&width=350" alt="Capa do livro O Senhor dos Anéis">
+            <div>
+                <h2 id="bookTitle">O Senhor dos Anéis</h2>
+                <p id="bookDescription">O Senhor dos Anéis é um livro de alta fantasia, escrito pelo escritor britânico J. R. R. Tolkien. Escrita entre 1937 e 1949, com muitas partes criadas durante a Segunda Guerra Mundial, a saga é uma continuação de O Hobbit. A história narra o conflito contra o mal que se alastra pela Terra-média, através da luta de várias raças - Humanos, Anãos, Elfos, Ents e Hobbits - contra Orques, para evitar que o "Anel do Poder" volte às mãos de seu criador Sauron, o Senhor Sombrio.</p>
+            </div>
+        </section>
+        <section class="book">
+            <img src="https://m.media-amazon.com/images/I/51oiPQONvoL._SY445_SX342_.jpg" alt="Capa do livro 1984">
+            <div>
+                <h2 id="bookTitle2">1984</h2>
+                <p id="bookDescription2">Uma distopia escrita por George Orwell, 1984 mostra uma futura realidade distópica ocorrida no ano de 1984. Nessa realidade, a Inglaterra é comandada por um regime totalitarista em que todos são vigiados pelo Grande Irmão. Winston Smith, protagonista da narrativa, questiona o poder vigente. O romance, publicado em 1949, está associado ao modernismo inglês.
+                </p>
+            </div>
+        </section>
+        <section class="book">
+            <img src="https://m.media-amazon.com/images/I/81fXBeYYxpL._SL1500_.jpg" alt="Capa do livro O Pequeno Príncipe">
+            <div>
+                <h2 id="bookTitle3">O Pequeno Príncipe</h2>
+                <p id="bookDescription3">Conheça a edição mais consagrada de um dos maiores clássicos da literatura, publicada no Brasil desde 1952, com a tradução do poeta dom Marcos Barbosa e as ilustrações originais em aquarela do autor. Nesta história que marcou gerações de leitores em todo o mundo, um piloto cai com seu avião no deserto do Saara e encontra um pequeno príncipe, que o leva a uma aventura filosófica e poética através de planetas que encerram a solidão humana. Um livro para todos os públicos, O pequeno príncipe é uma obra atemporal, com metáforas pertinentes e aprendizados sobre afeto, sonhos, esperança e tudo aquilo que é invisível aos olhos. </p>
+            </div>
+        </section>
+        <section class="book">
+            <img src="https://livrariacazarre.com.br/image/cache/data/api/produtos/7901-515x800.jpg?1652121065" alt="Capa do livro Dom Quixote">
+            <div>
+                <h2 id="bookTitle4">Dom Quixote</h2>
+                <p id="bookDescription4">Dom Quixote, escrito pelo espanhol Miguel de Cervantes, é umclássico da literatura mundial e uma das obras mais influentesda história. Publicado pela primeira vez em 1605, o romance éuma obra-prima da ficção que tece uma narrativa na qual humor,drama e filosofia são mesclados a personagens complexos eemocionantes. A história gira em torno de Alonso Quijano, umfidalgo empobrecido que decide se tornar um cavaleiro errante edefender os oprimidos. Vestido com uma armadura antiga, dá a simesmo o nome de Dom Quixote e parte em busca de aventurasacompanhado por seu leal escudeiro, Sancho Pança. Enquantonarra a luta de Dom Quixote para reconciliar seus sonhos idealistascom a realidade do mundo em que vive, Cervantes traz à tonaquestões profundas de identidade, loucura, amor e amizade,convidando o leitor a profundas reflexões acerca do mundo e desi mesmo, além de incentivar a busca pelos sonhos e ideais, aindaque pareçam loucos aos olhos alheios</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Biblioteca Virtual. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Modal de Configurações -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h2>Configurações de Acessibilidade</h2>
+            <label>
+                <input type="checkbox" id="highContrastToggle">
+                Modo Alto Contraste
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" id="textToSpeechToggle">
+                Leitura de Texto em Voz
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" id="zoomToggle">
+                Zoom
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" id="largeTextToggle">
+                Aumentar Tamanho da Fonte
+            </label>
+            <br>
+            <label>
+                <input type="radio" name="daltonism" id="protanopia" value="protanopia">
+                Filtro de Protanopia
+            </label>
+            <br>
+            <label>
+                <input type="radio" name="daltonism" id="deuteranopia" value="deuteranopia">
+                Filtro de Deuteranopia
+            </label>
+            <br>
+            <label>
+                <input type="radio" name="daltonism" id="tritanopia" value="tritanopia">
+                Filtro de Tritanopia
+            </label>
+            <br>
+            <label>
+                <input type="radio" name="daltonism" id="achromatopsia" value="achromatopsia">
+                Filtro de Acromatopsia
+            </label>
+            <br>
+            <label>
+                <input type="radio" name="daltonism" id="noDaltonism" value="none" checked>
+                Remover Filtros de Daltonismo
+            </label>
+            <br>
+            <button id="closeSettings">Fechar Configurações</button>
+        </div>
+    </div>
+
+    <script>
+        const settingsButton = document.getElementById('settingsButton');
+        const settingsModal = document.getElementById('settingsModal');
+        const closeModal = document.getElementById('closeModal');
+        const closeSettings = document.getElementById('closeSettings');
+        const highContrastToggle = document.getElementById('highContrastToggle');
+        const textToSpeechToggle = document.getElementById('textToSpeechToggle');
+        const zoomToggle = document.getElementById('zoomToggle');
+        const largeTextToggle = document.getElementById('largeTextToggle');
+        const daltonismFilters = document.getElementsByName('daltonism');
+
+        // Abrir Modal de Configurações
+        settingsButton.addEventListener('click', () => {
+            settingsModal.style.display = 'block';
+        });
+
+        // Fechar Modal de Configurações
+        closeModal.addEventListener('click', () => {
+            settingsModal.style.display = 'none';
+        });
+
+        closeSettings.addEventListener('click', () => {
+            settingsModal.style.display = 'none';
+        });
+
+        // Alto Contraste
+        highContrastToggle.addEventListener('change', () => {
+            document.body.classList.toggle('high-contrast');
+        });
+
+        // Leitura de Texto em Voz
+        let speechSynthesisEnabled = false;
+        textToSpeechToggle.addEventListener('change', (event) => {
+            speechSynthesisEnabled = event.target.checked;
+            if (!speechSynthesisEnabled) {
+                window.speechSynthesis.cancel();
+            }
+        });
+
+        // Função para Leitura de Texto
+        let isSpeaking = false;
+        function speak(text) {
+            if (speechSynthesisEnabled) {
+                if (isSpeaking) {
+                    window.speechSynthesis.cancel();
+                    isSpeaking = false;
+                } else {
+                    const speech = new SpeechSynthesisUtterance(text);
+                    window.speechSynthesis.speak(speech);
+                    isSpeaking = true;
+                }
+            }
+        }
+
+        // Zoom
+        zoomToggle.addEventListener('change', () => {
+            document.body.classList.toggle('zoom-in');
+        });
+
+        // Aumentar Tamanho da Fonte
+        largeTextToggle.addEventListener('change', () => {
+            document.body.classList.toggle('large-text');
+        });
+
+        // Filtros de Daltonismo
+        daltonismFilters.forEach(filter => {
+            filter.addEventListener('change', (event) => {
+                document.body.className = ''; // Remove outras classes
+                if (event.target.value !== 'none') {
+                    document.body.classList.add(event.target.value);
+                }
+            });
+        });
+
+        // Exemplo de Leitura de Texto ao Passar o Mouse (pode ser aplicado a outros elementos)
+        document.getElementById('bookTitle').addEventListener('mouseenter', () => {
+            speak("O Senhor dos Anéis");
+        });
+
+        document.getElementById('bookDescription').addEventListener('mouseenter', () => {
+            speak("O Senhor dos Anéis é um livro de alta fantasia, escrito pelo escritor britânico J. R. R. Tolkien. Escrita entre 1937 e 1949, com muitas partes criadas durante a Segunda Guerra Mundial, a saga é uma continuação de O Hobbit. A história narra o conflito contra o mal que se alastra pela Terra-média, através da luta de várias raças - Humanos, Anãos, Elfos, Ents e Hobbits - contra Orques, para evitar que o 'Anel do Poder' volte às mãos de seu criador Sauron, o Senhor Sombrio.");
+        });
+
+        document.getElementById('bookTitle2').addEventListener('mouseenter', () => {
+            speak("1984");
+        });
+
+        document.getElementById('bookDescription2').addEventListener('mouseenter', () => {
+            speak("Uma distopia escrita por George Orwell, 1984 mostra uma futura realidade distópica ocorrida no ano de 1984. Nessa realidade, a Inglaterra é comandada por um regime totalitarista em que todos são vigiados pelo Grande Irmão. Winston Smith, protagonista da narrativa, questiona o poder vigente. O romance, publicado em 1949, está associado ao modernismo inglês.");
+        });
+
+        document.getElementById('bookTitle3').addEventListener('mouseenter', () => {
+            speak("O Pequeno Príncipe");
+        });
+
+        document.getElementById('bookDescription3').addEventListener('mouseenter', () => {
+            speak("Conheça a edição mais consagrada de um dos maiores clássicos da literatura, publicada no Brasil desde 1952, com a tradução do poeta dom Marcos Barbosa e as ilustrações originais em aquarela do autor. Nesta história que marcou gerações de leitores em todo o mundo, um piloto cai com seu avião no deserto do Saara e encontra um pequeno príncipe, que o leva a uma aventura filosófica e poética através de planetas que encerram a solidão humana. Um livro para todos os públicos, O pequeno príncipe é uma obra atemporal, com metáforas pertinentes e aprendizados sobre afeto, sonhos, esperança e tudo aquilo que é invisível aos olhos ");
+        });
+
+        document.getElementById('bookTitle4').addEventListener('mouseenter', () => {
+            speak("Dom Quixote");
+        });
+
+        document.getElementById('bookDescription4').addEventListener('mouseenter', () => {
+            speak("Dom Quixote, escrito pelo espanhol Miguel de Cervantes, é umclássico da literatura mundial e uma das obras mais influentesda história. Publicado pela primeira vez em 1605, o romance éuma obra-prima da ficção que tece uma narrativa na qual humor,drama e filosofia são mesclados a personagens complexos eemocionantes. A história gira em torno de Alonso Quijano, umfidalgo empobrecido que decide se tornar um cavaleiro errante edefender os oprimidos. Vestido com uma armadura antiga, dá a simesmo o nome de Dom Quixote e parte em busca de aventurasacompanhado por seu leal escudeiro, Sancho Pança. Enquantonarra a luta de Dom Quixote para reconciliar seus sonhos idealistascom a realidade do mundo em que vive, Cervantes traz à tonaquestões profundas de identidade, loucura, amor e amizade,convidando o leitor a profundas reflexões acerca do mundo e desi mesmo, além de incentivar a busca pelos sonhos e ideais, aindaque pareçam loucos aos olhos alheios");
+        });
+        document.getElementById('siteTitle').addEventListener('mouseenter', () => {
+            speak("Bem-vindo à Biblioteca Virtual");
+        });
+         document.getElementById('siteSlogan').addEventListener('mouseenter', () => {
+            speak("Lendo para além da imaginação");
+        });
+        document.getElementById('settingsButton').addEventListener('mouseenter', () => {
+            speak("Configurações de Acessibilidade");
+        });
+        // Falar o título e o slogan ao carregar a página
+        window.addEventListener('load', () => {
+            if (speechSynthesisEnabled) {
+                speak(document.getElementById('siteTitle').textContent);
+                speak(document.getElementById('siteSlogan').textContent);
+            }
+        });
+    </script>
+</body>
+</html>
