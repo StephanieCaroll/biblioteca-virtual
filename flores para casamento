@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de Acessibilidade - Flores para Casamento</title>
+    <style>
+        body {
+            font-family: cursive Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            transition: filter 0.3s ease;
+        }
+
+        header {
+            background-color: #d4a5a5;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            animation: slideIn 2s ease-in-out;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 60px; /* Espaço para o rodapé fixo */
+        }
+
+        .flower-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .flower-section {
+            position: relative;
+            flex: 1 1 30%;
+            margin: 10px;
+            box-sizing: border-box;
+            max-width: 300px; /* Largura máxima das flores */
+        }
+
+        .flower-image {
+            width: 100%;
+            height: 200px; /* Altura fixa */
+            object-fit: cover; /* Manter a proporção da imagem */
+            border-radius: 10px;
+        }
+
+        .flower-description {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.6); /* Fundo semitransparente */
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .color-text {
+            color: #b35a5a;
+            font-size: 1.5em;
+            animation: textBlink 2s infinite;
+        }
+
+        .settings {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #d4a5a5;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .settings-panel {
+            display: none;
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .settings-panel button {
+            margin: 5px 0;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            background-color: #d4a5a5;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        /* Filtros de daltonismo */
+        .protanopia {
+            filter: url('#protanopia-filter');
+        }
+
+        .deuteranopia {
+            filter: url('#deuteranopia-filter');
+        }
+
+        .tritanopia {
+            filter: url('#tritanopia-filter');
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes textBlink {
+            0%, 100% { color: #b35a5a; }
+            50% { color: #d46a6a; }
+        }
+
+        /* Filtros de daltonismo em SVG */
+        .filters {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Flores para Casamento</h1>
+        <p>As flores são um dos elementos indispensáveis na decoração de qualquer evento, especialmente casamentos. Elas ajudam a compor o ambiente e, independente do estilo da sua decor, deixam tudo ainda mais bonito. Mas quais flores escolher? Quais são as mais utilizadas?</p>
+    </header>
+
+    <main>
+        <div class="flower-container">
+            <div class="flower-section">
+                <img src="https://minhasplantas3.s3.amazonaws.com/media/plantas/galeria/Rosa-sp-10.jpg" alt="Rosas" class="flower-image">
+                <div class="flower-description">
+                    <h2>Rosas</h2>
+                    <p>As rosas são clássicas e atemporais. Disponíveis em uma variedade de cores, são uma escolha popular para buquês e arranjos de casamento.</p>
+                </div>
+            </div>
+
+            <div class="flower-section">
+                <img src="https://www.polenflor.com.br/media/catalog/product/cache/1/image/800x/17f82f742ffe127f42dca9de82fb58b1/l/i/li.jpg" alt="Lírios" class="flower-image">
+                <div class="flower-description">
+                    <h2>Lírios</h2>
+                    <p>Elegantes e sofisticados, os lírios adicionam um toque de glamour aos casamentos. Eles simbolizam pureza e compromisso.</p>
+                </div>
+            </div>
+
+            <div class="flower-section">
+                <img src="https://s2.glbimg.com/K6ATOQWJq-g1Z6pWk3JTCuudiF4=/620x455/e.glbimg.com/og/ed/f/original/2021/01/15/tulipa-dicas-cuidados-plantio.jpg" alt="Tulipas" class="flower-image">
+                <div class="flower-description">
+                    <h2>Tulipas</h2>
+                    <p>As tulipas são perfeitas para casamentos na primavera. Com sua aparência delicada, elas representam o amor e a felicidade.</p>
+                </div>
+            </div>
+
+            <div class="flower-section">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQllKzu2rsSpbOIZdGwZvvRgezqtVCVsLBj1xBlJCmy0qjII8Nj" alt="Orquídeas" class="flower-image">
+                <div class="flower-description">
+                    <h2>Orquídeas</h2>
+                    <p>Orquídeas são flores exóticas e sofisticadas, ideais para casamentos modernos. Elas trazem um toque tropical e único.</p>
+                </div>
+            </div>
+
+            <div class="flower-section">
+                <img src="https://petalaseflores.com.br/wp-content/uploads/2024/01/hortensia-capa.jpg" alt="Hortênsias" class="flower-image">
+                <div class="flower-description">
+                    <h2>Hortênsias</h2>
+                    <p>Hortênsias têm flores volumosas que criam arranjos impressionantes. Elas são uma escolha popular para casamentos ao ar livre.</p>
+                </div>
+            </div>
+
+            <div class="flower-section">
+                <img src="https://s1.static.brasilescola.uol.com.br/be/2023/09/vista-aproximada-de-um-girassol-em-uma-plantacao-de-girassois.jpg" alt="Girassóis" class="flower-image">
+                <div class="flower-description">
+                    <h2>Girassóis</h2>
+                    <p>Girassóis trazem alegria e energia a qualquer celebração. Eles são perfeitos para casamentos rústicos ou no campo.</p>
+                </div>
+            </div>
+
+            <div class="flower-section">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzZf8Hm9H-UsRKXp9bQw4wMHBZQ-UHm7f5eg&s" alt="Peônias" class="flower-image">
+                <div class="flower-description">
+                    <h2>Peônias</h2>
+                    <p>As peônias são conhecidas por suas flores grandes e exuberantes, trazendo um toque de elegância e romance aos arranjos.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="settings" onclick="toggleSettings()">Configurações</div>
+
+    <div class="settings-panel" id="settingsPanel">
+        <button onclick="applyFilter('protanopia')">Filtro Protanopia</button>
+        <button onclick="applyFilter('deuteranopia')">Filtro Deuteranopia</button>
+        <button onclick="applyFilter('tritanopia')">Filtro Tritanopia</button>
+        <button onclick="removeFilter()">Desativar Filtros</button>
+    </div>
+        <p style="
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #d4a5a5;
+        color: white;
+        text-align: center;
+        padding: 50px;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);">2024 Flores para Casamento. Todos os direitos reservados.</p>
+    <!-- Filtros de daltonismo em SVG -->
+    <svg xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <!-- Filtro Protanopia -->
+            <filter id="protanopia-filter">
+                <feColorMatrix type="matrix" values="0.567 0.433 0 0 0 0.558 0.442 0 0 0 0 0.242 0 0 0 0 0 0 1 0"/>
+            </filter>
+
+            <!-- Filtro Deuteranopia -->
+            <filter id="deuteranopia-filter">
+                <feColorMatrix type="matrix" values="0.400 0.600 0 0 0 0.300 0.700 0 0 0 0.100 0.900 0 0 0 0 0 0 1 0"/>
+            </filter>
+
+            <!-- Filtro Tritanopia -->
+            <filter id="tritanopia-filter">
+                <feColorMatrix type="matrix" values="0.950 0.050 0 0 0 0.000 0.300 0 0 0 0.000 0.750 0 0 0 0 0 0 1 0"/>
+            </filter>
+        </defs>
+    </svg>
+
+    <script>
+        // Função para alternar a exibição do painel de configurações
+        function toggleSettings() {
+            const panel = document.getElementById('settingsPanel');
+            panel.style.display = panel.style.display === 'none' || panel.style.display === '' ? 'block' : 'none';
+        }
+
+        // Função para aplicar um filtro de daltonismo
+        function applyFilter(filterType) {
+            document.body.classList.remove('protanopia', 'deuteranopia', 'tritanopia');
+            document.body.classList.add(filterType);
+        }
+
+        // Função para remover todos os filtros
+        function removeFilter() {
+            document.body.classList.remove('protanopia', 'deuteranopia', 'tritanopia');
+        }
+    </script>
+</body>
+</html>
